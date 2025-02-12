@@ -1,0 +1,12 @@
+body {
+  background-color: rgb(60, 60, 190);
+  font-family: "Roboto", serif;
+}
+.weather-creation {
+  background-image: url("weather.jpg");
+  max-width: 600px;
+  margin: 45px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 30px 50px;
+}
