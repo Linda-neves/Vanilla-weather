@@ -15,21 +15,34 @@
   <body>
     <div class="weather-creation">
       <header>
-        <form>
-          <input type="search" placeholder="Enter city" required />
-          <input type="submit" value="search" />
+        <form class="search-engine" id="search-engine">
+          <input
+            type="search"
+            placeholder="Enter city"
+            required
+            id="city-search"
+            class="searchForm-input"
+          />
+          <input type="submit" value="search" class="searchForm-button" />
         </form>
       </header>
       <main>
-        <div>
-          <h1>Johannesburg</h1>
-          <p>
-            Wednesday 20:41, partly cloudy
-            <br />
-            Humidity: 70% , Precip: 10% , Wind: 10km/h
-          </p>
+        <div class="weather-description">
+          <div>
+            <h1 class="city" id="city">Johannesburg</h1>
+            <p class="weather-data">
+              Wednesday 20:41, partly cloudy
+              <br />
+              Humidity: <strong>70%</strong> , Precip: <strong>10%</strong> ,
+              Wind: <strong>10km/h</strong>
+            </p>
+          </div>
+          <div class="weather-temperature">
+            <div class="icon">🌤</div>
+            <div class="temperature">20</div>
+            <div class="symbol">°</div>
+          </div>
         </div>
-        <div>🌤 20°</div>
       </main>
       <footer>
         coded by
@@ -40,5 +53,6 @@
         <a href="https://myshecodesweather-app.netlify.app/">Netlify</a>
       </footer>
     </div>
+    <script src="index.js"></script>
   </body>
 </html>
