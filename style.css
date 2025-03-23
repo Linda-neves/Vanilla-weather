@@ -50,12 +50,15 @@ main {
 .weather-description strong {
   color: rgb(155, 26, 26);
 }
+.feeling {
+  font-weight: bold;
+}
 .weather-temperature {
   display: flex;
 }
 .icon {
-  font-size: 44px;
-  margin: 22px;
+  width: 88px;
+  height: 88px;
 }
 .temperature {
   font-size: 88px;
