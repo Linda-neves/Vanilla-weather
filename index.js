@@ -17,6 +17,9 @@ function updateWeatherData(response) {
   windElemnt.innerHTML = `${response.data.wind.speed}km/h`;
   timeElement.innerHTML = formatDate(date);
   temperatureElement.innerHTML = Math.round(temperature);
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-icon" />`;
+
+  getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -53,25 +56,41 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
-function displayForecast() {
-  let forecastElement = document.querySelector("#forecast");
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  let days = ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
+  return days[date.getDay()];
+}
 
+function getForecast(city) {
+  let apiKey = "bc0cf33438a473et001fo0823a9ca9ff";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  response.data.daily.forEach(function (day, index) {
+    if (index < 6) {
+      forecastHtml =
+        forecastHtml +
+        `
       <div class="weather-forecast-days">
-      <div class="weather-forecast-date">${day}</div>
-      <div class="weather-forecast-icon">☀</div>
-      <div class="weather-forecast-temperature">20°/9°</div>
+        <div class="weather-forecast-date">${formatDay(day.time)}</div>
+       
+        <img src="${day.condition.icon_url}"  class="weather-forecast-icon"  />
+       
+        <div class="weather-forecast-temperature">${Math.round(
+          day.temperature.maximum
+        )}°/${Math.round(day.temperature.minimum)}°</div>
       </div>
-    `;
+     `;
+    }
   });
 
+  let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
 }
 
@@ -79,4 +98,3 @@ let searchFormElement = document.querySelector("#search-engine");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Johannesburg");
-displayForecast();
