@@ -69,6 +69,29 @@ main {
   font-weight: bold;
   font-size: 20px;
 }
+.weather-forcast {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 25px;
+}
+.weather-forcast-date {
+  text-align: center;
+  color: rgb(26, 25, 25);
+  font-size: 16px;
+  line-height: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.weather-forcast-icon {
+  text-align: center;
+  font-size: 38px;
+}
+.weather-forcast-temperature {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(155, 26, 26);
+}
 a {
   color: rgb(20, 20, 141);
 }
